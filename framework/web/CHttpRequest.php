@@ -508,6 +508,8 @@ class CHttpRequest extends CApplicationComponent
 				}
 				else
 					$this->_requestUri=preg_replace('/^(http|https):\/\/[^\/]+/i','',$this->_requestUri);
+				if(!empty($_SERVER['QUERY_STRING']))
+					$this->_requestUri.='?'.$_SERVER['QUERY_STRING'];
 			}
 			elseif(isset($_SERVER['ORIG_PATH_INFO']))  // IIS 5.0 CGI
 			{
